@@ -187,6 +187,15 @@ local config = {
       --     },
       --   },
       -- },
+      arduino_language_server = {
+        cmd = {
+          "arduino-language-server",
+          "-cli-config", "$HOME/.arduino15/arduino-cli.yaml",
+          "-fqbn", "esp32:esp32:esp32wrover",
+          "-cli", "arduino-cli",
+          "-clangd", "clangd"
+        }
+      },
     },
   },
 
@@ -239,16 +248,28 @@ local config = {
       -- },
       {
         "nvim-neorg/neorg",
+        run = ":Neorg sync-parsers",
         config = function()
           require("neorg").setup {
             load = {
               ["core.defaults"] = {},
               ["core.norg.concealer"] = {},
-              ["core.norg.completion"] = {},
+              ["core.norg.completion"] = {   
+                config = {
+                  engine = "nvim-cmp"
+                }
+              },
               ["core.norg.dirman"] = {
                 config = {
                   workspaces = {
-                      wiki = "~/wiki/neorg"
+                    wiki = "~/wiki/neorg"
+                  }
+                }
+              },
+              ["core.integrations.nvim-cmp"] = {
+                config = {
+                  sources = {
+                    name = "neorg"
                   }
                 }
               },
