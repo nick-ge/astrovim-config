@@ -8,8 +8,8 @@ return {
   n = {
     -- second key is the lefthand side of the map
     -- mappings seen under group name "Buffer"
-    ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
-    ["<leader>bD"] = {
+    ["<leader>bn"]  = { "<cmd>tabnew<cr>", desc = "New tab" },
+    ["<leader>bD"]  = {
       function()
         require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(bufnr) end)
       end,
@@ -17,9 +17,17 @@ return {
     },
     -- tables with the `name` key will be registered with which-key if it's installed
     -- this is useful for naming menus
-    ["<leader>b"] = { name = "Buffers" },
+    ["<leader>b"]   = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<S-Tab>"]     = { ":bprev<CR>", desc = "Previous buffer" },
+    ["<Tab>"]       = { ":bnext<CR>", desc = "Next buffer" },
+    ["<leader>v"]   = { name = "Vimtex" },
+    ["<leader>vc"]  = { name = "Compilation" },
+    ["<leader>vcc"] = { ":VimtexCompile<CR>", desc = "Enable/Disable continuous mode" },
+    ["<leader>vcs"] = { ":VimtexCompileSS<CR>", desc = "Do single shot compilation" },
+    ["<leader>vi"]  = { ":VimtexInfo<CR>", desc = "Show information" },
+    ["<leader>vC"]  = { ":VimtexInfo<CR>", desc = "Clear" },
   },
   t = {
     -- setting a mapping to false will disable it
