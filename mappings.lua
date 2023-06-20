@@ -11,7 +11,10 @@ return {
     ["<leader>bn"]  = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"]  = {
       function()
-        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr) require("astronvim.utils.buffer").close(bufnr) end)
+        require("astronvim.utils.status").heirline.buffer_picker(function(bufnr)
+          require("astronvim.utils.buffer").close(
+            bufnr)
+        end)
       end,
       desc = "Pick to close",
     },
@@ -20,13 +23,14 @@ return {
     ["<leader>b"]   = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-    ["<S-Tab>"]     = { ":bprev<CR>", desc = "Previous buffer" },
-    ["<Tab>"]       = { ":bnext<CR>", desc = "Next buffer" },
+    ["<S-Tab>"]     = { ":bnext<CR>", desc = "Previous buffer" },
+    ["<Tab>"]       = { ":bprev<CR>", desc = "Next buffer" },
     ["<leader>v"]   = { name = "Vimtex" },
     ["<leader>vc"]  = { name = "Compilation" },
     ["<leader>vcc"] = { ":VimtexCompile<CR>", desc = "Enable/Disable continuous mode" },
     ["<leader>vcs"] = { ":VimtexCompileSS<CR>", desc = "Do single shot compilation" },
     ["<leader>vi"]  = { ":VimtexInfo<CR>", desc = "Show information" },
+    ["<leader>vo"]  = { ":VimtexView<CR>", desc = "Open document" },
     ["<leader>vC"]  = { ":VimtexInfo<CR>", desc = "Clear" },
   },
   t = {
